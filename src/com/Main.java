@@ -8,6 +8,8 @@ import java.nio.file.FileSystem;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.time.Duration;
+import java.time.Instant;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -16,8 +18,7 @@ import java.util.function.Function;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-import static java.util.stream.Collectors.groupingBy;
-import static java.util.stream.Collectors.toList;
+import static java.util.stream.Collectors.*;
 
 public class Main {
 
@@ -26,6 +27,12 @@ public class Main {
         String[] s1 = str1.split(" ");
         String collect = Arrays.stream(s1).filter(s2 -> !s2.isEmpty()).collect(Collectors.joining(" "));
         String s = collect.replaceAll("\\p{Punct}", "");
+        s = s.toUpperCase();
+        return s;
+    }
+
+    public static String normalizeWord(String str) {
+        String s = str.replaceAll("\\p{Punct}", "");
         s = s.toUpperCase();
         return s;
     }
@@ -51,7 +58,7 @@ public class Main {
 
 
     public static void main(String[] args) throws IOException {
-
+        Instant start = Instant.now();
         //Init
         MPI.Init(args);
 
@@ -67,10 +74,13 @@ public class Main {
         if (rank == root) {
             System.out.println("world size: " + worldSize);
             Path inputPath = Paths.get("./text/input.txt");
-            String inputString = Files.lines(inputPath).collect(Collectors.joining(" "));
-            String normalizedInputString = normalize(inputString);
-
-            List<String> words = Arrays.stream(normalizedInputString.split(" ")).collect(toList());
+            
+            List<String> words = Files.lines(inputPath)
+                    .parallel()
+                    .map(Main::normalize)
+                    .flatMap(s -> Arrays.stream(s.split(" ")))
+                    .filter(s -> !s.equals(""))
+                    .collect(Collectors.toList());
 
             List<List<String>> workerLoads = loadBalance(worldSize, words);
 
@@ -82,10 +92,10 @@ public class Main {
 
             List<Path> filepaths = filenames.stream().map(name -> Paths.get(name)).collect(toList());
 
-            for (Path filepath : filepaths) {
-                Files.deleteIfExists(filepath);
-                Files.createFile(filepath);
-            }
+//            for (Path filepath : filepaths) {
+//                Files.deleteIfExists(filepath);
+//                Files.createFile(filepath);
+//            }
 
             for (int i = 0; i < worldSize; i++) {
                 Files.write(filepaths.get(i), workerLoads.get(i));
@@ -110,18 +120,18 @@ public class Main {
         String answerFilename = "./text/" + "answer" + recvbuf[0] + ".txt";
 
         Path path = Paths.get(filename);
-        Map<String, Long> answer = Files.lines(path).collect(groupingBy(Function.identity(), Collectors.counting()));
+        List<String> wordFreq = Files.lines(path)
+                .collect(collectingAndThen(
+                groupingBy(Function.identity(), Collectors.counting()),
+                stringLongMap -> stringLongMap
+                        .entrySet()
+                        .stream()
+                        .map(stringLongEntry -> stringLongEntry.getKey() + "-" + stringLongEntry.getValue())
+                        .collect(toList())));
 
         Path answerPath = Paths.get(answerFilename);
-        Files.deleteIfExists(answerPath);
-        Files.createFile(answerPath);
-
-
-        List<String> wordFreq = answer.entrySet()
-                .stream()
-                .map(stringLongEntry -> stringLongEntry.getKey() + "-" + stringLongEntry.getValue())
-                .collect(toList());
-
+//        Files.deleteIfExists(answerPath);
+//        Files.createFile(answerPath);
         Files.write(answerPath, wordFreq);
 
         //Gather
@@ -155,14 +165,15 @@ public class Main {
                     .collect(toList());
 
 
-            Path pathFinal = Paths.get("./text/final.txt");
-            Files.deleteIfExists(pathFinal);
-            Files.createFile(pathFinal);
+            Path pathFinal = Paths.get("./text/parallelfinal.txt");
+//            Files.deleteIfExists(pathFinal);
+//            Files.createFile(pathFinal);
             Files.write(pathFinal,wordFreqReal);
         }
 
         //Finalize
         MPI.Finalize();
-
+        Instant end = Instant.now();
+        System.out.println(Duration.between(start, end).toMillis());
     }
 }

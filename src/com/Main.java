@@ -144,15 +144,15 @@ public class Main {
             Map<String, List<String>> wordFreqDuplicates = Arrays.stream(answerString.toString().split(" "))
                     .collect(groupingBy(s -> s.split("-")[0]));
 
-            System.out.println(wordFreqDuplicates);
-
             List<String> wordFreqReal = wordFreqDuplicates.entrySet().stream()
                     .map(stringListEntry -> stringListEntry.getKey() + ": " + (stringListEntry.getValue()
                             .stream()
                             .map(s -> s.split("-")[1])
                             .mapToInt(Integer::parseInt)
                             .sum())
-                    ).collect(toList());
+                    )
+                    .sorted()
+                    .collect(toList());
 
 
             Path pathFinal = Paths.get("./text/final.txt");

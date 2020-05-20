@@ -26,13 +26,13 @@ public class Main {
         String str1 = str.trim();
         String[] s1 = str1.split(" ");
         String collect = Arrays.stream(s1).filter(s2 -> !s2.isEmpty()).collect(Collectors.joining(" "));
-        String s = collect.replaceAll("\\p{Punct}", "");
+        String s = collect.replaceAll("[\\p{Punct}]", "");
         s = s.toUpperCase();
         return s;
     }
 
     public static String normalizeWord(String str) {
-        String s = str.replaceAll("\\p{Punct}", "");
+        String s = str.replaceAll("[\\p{Punct}]", "");
         s = s.toUpperCase();
         return s;
     }
@@ -73,7 +73,7 @@ public class Main {
         //Print world size
         if (rank == root) {
             System.out.println("world size: " + worldSize);
-            Path inputPath = Paths.get("./text/input.txt");
+            Path inputPath = Paths.get("./text/finalsequencial.txt");
             
             List<String> words = Files.lines(inputPath)
                     .parallel()

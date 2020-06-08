@@ -63,6 +63,8 @@ public class Main {
         //Init
         MPI.Init(args);
 
+        System.out.println();
+
         //World info
         int rank = MPI.COMM_WORLD.Rank();
         int worldSize = MPI.COMM_WORLD.Size();

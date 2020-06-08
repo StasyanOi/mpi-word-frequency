@@ -1,450 +1,400 @@
 ----------
 0
 MPJ Express (0.44) is started in the multicore configuration
-world size: 5
-3140
-3144
-3138
-3142
-3147
+world size: 4
+2936
+2932
+2930
+2928
 ----------
 1
 MPJ Express (0.44) is started in the multicore configuration
-world size: 5
-3177
-3175
-3172
-3167
-3174
+world size: 4
+4796
+4807
+4803
+4800
 ----------
 2
 MPJ Express (0.44) is started in the multicore configuration
-world size: 5
-3279
-3287
-3289
-3284
-3282
+world size: 4
+3762
+3754
+3757
+3759
 ----------
 3
 MPJ Express (0.44) is started in the multicore configuration
-world size: 5
-3637
-3635
-3629
-3633
-3631
+world size: 4
+3483
+3481
+3477
+3479
 ----------
 4
 MPJ Express (0.44) is started in the multicore configuration
-world size: 5
-3277
-3280
-3284
-3287
-3282
+world size: 4
+3319
+3315
+3312
+3314
 ----------
 5
 MPJ Express (0.44) is started in the multicore configuration
-world size: 5
-3309
-3314
-3310
-3312
-3317
+world size: 4
+3354
+3352
+3349
+3348
 ----------
 6
 MPJ Express (0.44) is started in the multicore configuration
-world size: 5
-3156
-3152
-3148
-3150
-3145
+world size: 4
+3141
+3139
+3137
+3136
 ----------
 7
 MPJ Express (0.44) is started in the multicore configuration
-world size: 5
-3189
-3182
-3184
-3185
-3187
+world size: 4
+3181
+3176
+3178
+3175
 ----------
 8
 MPJ Express (0.44) is started in the multicore configuration
-world size: 5
-3305
-3301
-3299
-3303
-3297
+world size: 4
+3337
+3335
+3333
+3330
 ----------
 9
 MPJ Express (0.44) is started in the multicore configuration
-world size: 5
-3285
-3283
-3278
-3276
-3276
+world size: 4
+3368
+3362
+3364
+3365
 ----------
 10
 MPJ Express (0.44) is started in the multicore configuration
-world size: 5
-3231
-3227
-3225
-3229
-3223
+world size: 4
+3332
+3334
+3336
+3339
 ----------
 11
 MPJ Express (0.44) is started in the multicore configuration
-world size: 5
-3294
-3292
-3291
-3296
-3298
+world size: 4
+3403
+3398
+3399
+3401
 ----------
 12
 MPJ Express (0.44) is started in the multicore configuration
-world size: 5
-3582
-3572
-3577
-3575
-3579
+world size: 4
+3440
+3437
+3435
+3434
 ----------
 13
 MPJ Express (0.44) is started in the multicore configuration
-world size: 5
-3944
-3941
-3934
-3936
-3938
+world size: 4
+3431
+3435
+3433
+3437
 ----------
 14
 MPJ Express (0.44) is started in the multicore configuration
-world size: 5
-3727
-3716
-3723
-3719
-3717
+world size: 4
+4114
+4120
+4117
+4123
 ----------
 15
 MPJ Express (0.44) is started in the multicore configuration
-world size: 5
-3297
-3291
-3293
-3289
-3294
+world size: 4
+3541
+3545
+3543
+3547
 ----------
 16
 MPJ Express (0.44) is started in the multicore configuration
-world size: 5
-3592
-3587
-3590
-3597
-3594
+world size: 4
+3876
+3873
+3869
+3871
 ----------
 17
 MPJ Express (0.44) is started in the multicore configuration
-world size: 5
-3376
-3364
-3369
-3371
-3374
+world size: 4
+4977
+4973
+4971
+4969
 ----------
 18
 MPJ Express (0.44) is started in the multicore configuration
-world size: 5
-3268
-3274
-3273
-3271
-3277
+world size: 4
+4209
+4203
+4206
+4199
 ----------
 19
 MPJ Express (0.44) is started in the multicore configuration
-world size: 5
-3308
-3307
-3302
-3304
-3300
+world size: 4
+4704
+4698
+4695
+4700
 ----------
 20
 MPJ Express (0.44) is started in the multicore configuration
-world size: 5
-3262
-3270
-3264
-3266
-3267
+world size: 4
+4593
+4586
+4589
+4584
 ----------
 21
 MPJ Express (0.44) is started in the multicore configuration
-world size: 5
-3267
-3258
-3261
-3265
-3263
+world size: 4
+4294
+4287
+4290
+4285
 ----------
 22
 MPJ Express (0.44) is started in the multicore configuration
-world size: 5
-3582
-3577
-3580
-3572
-3575
+world size: 4
+4379
+4375
+4376
+4372
 ----------
 23
 MPJ Express (0.44) is started in the multicore configuration
-world size: 5
-3459
-3453
-3456
-3454
-3450
+world size: 4
+4036
+4036
+4040
+4043
 ----------
 24
 MPJ Express (0.44) is started in the multicore configuration
-world size: 5
-3390
-3383
-3387
-3380
-3380
+world size: 4
+3748
+3752
+3749
+3755
 ----------
 25
 MPJ Express (0.44) is started in the multicore configuration
-world size: 5
-3248
-3257
-3254
-3253
-3251
+world size: 4
+4053
+4045
+4048
+4050
 ----------
 26
 MPJ Express (0.44) is started in the multicore configuration
-world size: 5
-3058
-3050
-3054
-3052
-3055
+world size: 4
+4017
+4009
+4011
+4006
 ----------
 27
 MPJ Express (0.44) is started in the multicore configuration
-world size: 5
-3444
-3439
-3447
-3451
-3442
+world size: 4
+4246
+4238
+4241
+4243
 ----------
 28
 MPJ Express (0.44) is started in the multicore configuration
-world size: 5
-3327
-3321
-3317
-3319
-3323
+world size: 4
+4532
+4524
+4529
+4527
 ----------
 29
 MPJ Express (0.44) is started in the multicore configuration
-world size: 5
-3282
-3272
-3279
-3277
-3275
+world size: 4
+4605
+4611
+4602
+4608
 ----------
 30
 MPJ Express (0.44) is started in the multicore configuration
-world size: 5
-4190
-4188
-4192
-4186
-4183
+world size: 4
+4777
+4780
+4774
+4783
 ----------
 31
 MPJ Express (0.44) is started in the multicore configuration
-world size: 5
-3812
-3804
-3810
-3807
-3801
+world size: 4
+3920
+3911
+3916
+3914
 ----------
 32
 MPJ Express (0.44) is started in the multicore configuration
-world size: 5
-3787
-3782
-3773
-3784
-3779
+world size: 4
+4224
+4224
+4230
+4233
 ----------
 33
 MPJ Express (0.44) is started in the multicore configuration
-world size: 5
-4178
-4171
-4173
-4168
-4175
+world size: 4
+3793
+3791
+3787
+3789
 ----------
 34
 MPJ Express (0.44) is started in the multicore configuration
-world size: 5
-4658
-4650
-4648
-4655
-4652
+world size: 4
+4520
+4515
+4513
+4517
 ----------
 35
 MPJ Express (0.44) is started in the multicore configuration
-world size: 5
-4753
-4755
-4767
-4758
-4758
+world size: 4
+3571
+3568
+3565
+3566
 ----------
 36
 MPJ Express (0.44) is started in the multicore configuration
-world size: 5
-5181
-5175
-5178
-5171
-5172
+world size: 4
+3382
+3373
+3375
+3378
 ----------
 37
 MPJ Express (0.44) is started in the multicore configuration
-world size: 5
-4705
-4713
-4696
-4686
-4709
+world size: 4
+3378
+3374
+3376
+3372
 ----------
 38
 MPJ Express (0.44) is started in the multicore configuration
-world size: 5
-4649
-4646
-4641
-4644
-4637
+world size: 4
+3837
+3841
+3844
+3839
 ----------
 39
 MPJ Express (0.44) is started in the multicore configuration
-world size: 5
-4036
-4030
-4032
-4027
-4024
+world size: 4
+3298
+3292
+3295
+3301
 ----------
 40
 MPJ Express (0.44) is started in the multicore configuration
-world size: 5
-3310
-3305
-3307
-3303
-3299
+world size: 4
+3649
+3643
+3645
+3647
 ----------
 41
 MPJ Express (0.44) is started in the multicore configuration
-world size: 5
-3565
-3576
-3573
-3570
-3572
+world size: 4
+3351
+3345
+3343
+3348
 ----------
 42
 MPJ Express (0.44) is started in the multicore configuration
-world size: 5
-4809
-4791
-4797
-4806
-4804
+world size: 4
+4403
+4406
+4411
+4408
 ----------
 43
 MPJ Express (0.44) is started in the multicore configuration
-world size: 5
-4990
-4985
-4977
-4983
-4987
+world size: 4
+3426
+3421
+3424
+3428
 ----------
 44
 MPJ Express (0.44) is started in the multicore configuration
-world size: 5
-5055
-5058
-5053
-5062
-5050
+world size: 4
+3245
+3238
+3242
+3241
 ----------
 45
 MPJ Express (0.44) is started in the multicore configuration
-world size: 5
-4002
-3998
-3989
-3995
-3992
+world size: 4
+3377
+3375
+3373
+3371
 ----------
 46
 MPJ Express (0.44) is started in the multicore configuration
-world size: 5
-3509
-3501
+world size: 4
 3506
-3499
-3503
+3510
+3508
+3512
 ----------
 47
 MPJ Express (0.44) is started in the multicore configuration
-world size: 5
-4099
-4096
-4094
-4092
-4091
+world size: 4
+4102
+4109
+4104
+4106
 ----------
 48
 MPJ Express (0.44) is started in the multicore configuration
-world size: 5
-4008
-4003
-3999
-4005
-4001
+world size: 4
+3780
+3773
+3776
+3772
 ----------
 49
 MPJ Express (0.44) is started in the multicore configuration
-world size: 5
-4380
-4383
-4373
-4370
-4377
+world size: 4
+3502
+3498
+3496
+3499

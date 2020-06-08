@@ -34,7 +34,6 @@ public class Main {
     public static String normalizeWord(String str) {
         String s = str.replaceAll("[\\p{Punct}]", "");
         s = s.toUpperCase();
-        System.out.println();
         return s;
     }
 
@@ -62,8 +61,6 @@ public class Main {
         Instant start = Instant.now();
         //Init
         MPI.Init(args);
-
-        System.out.println();
 
         //World info
         int rank = MPI.COMM_WORLD.Rank();

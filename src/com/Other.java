@@ -17,7 +17,7 @@ public class Other {
 
     public static void main(String[] args) throws IOException {
         Instant start = Instant.now();
-        Path path = Paths.get("./text/finalsequencial.txt");
+        Path path = Paths.get(args[0]);
 
         Map<String, Long> freq = Files.lines(path)
                 .flatMap(s -> Arrays.stream(s.split(" ")))

@@ -21,7 +21,7 @@ public class Other {
 
         Map<String, Long> freq = Files.lines(path)
                 .flatMap(s -> Arrays.stream(s.split(" ")))
-                .map(Main::normalizeWord)
+                .map(MainBig::normalizeWord)
                 .filter(s -> !s.equals(""))
                 .collect(groupingBy(Function.identity(), counting()));
 

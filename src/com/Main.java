@@ -73,7 +73,7 @@ public class Main {
         //Print world size
         if (rank == root) {
             System.out.println("world size: " + worldSize);
-            Path inputPath = Paths.get("./text/finalsequencial.txt");
+            Path inputPath = Paths.get("./text/input_small.txt");
             
             List<String> words = Files.lines(inputPath)
                     .parallel()

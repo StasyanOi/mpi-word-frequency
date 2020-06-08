@@ -39,17 +39,17 @@ public class Statistics {
         System.out.println(average4Small);
 
 
-        Path pathBig1 = Paths.get("results_1_big");
+        Path pathBig1 = Paths.get("results_1_big_seq");
         int average1Big = getAverage(pathBig1);
 
-        Path pathMid1 = Paths.get("results_1_mid");
+        Path pathMid1 = Paths.get("results_1_mid_seq");
         int average1Mid = getAverage(pathMid1);
 
-        Path pathSmall1 = Paths.get("results_1_small");
+        Path pathSmall1 = Paths.get("results_1_small_seq");
         int average1Small = getAverage(pathSmall1);
 
 
-        int average1BigParal = getAverage(Paths.get("results_1_big_paral"));
+        int average1BigParal = getAverage(Paths.get("results_1_big"));
         int average2BigParal = getAverage(Paths.get("results_2_big"));
         int average3BigParal = getAverage(Paths.get("results_3_big"));
         int average4BigParal = getAverage(Paths.get("results_4_big"));

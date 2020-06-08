@@ -71,7 +71,7 @@ public class MainMid {
         //Print world size
         if (rank == root) {
             System.out.println("world size: " + worldSize);
-            Path inputPath = Paths.get("./text/input_small.txt");
+            Path inputPath = Paths.get("./text/input_mid.txt");
             
             List<String> words = Files.lines(inputPath)
                     .parallel()

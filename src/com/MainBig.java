@@ -71,7 +71,7 @@ public class MainBig {
         //Print world size
         if (rank == root) {
             System.out.println("world size: " + worldSize);
-            Path inputPath = Paths.get("./text/input_small.txt");
+            Path inputPath = Paths.get("./text/input_big.txt");
             
             List<String> words = Files.lines(inputPath)
                     .parallel()

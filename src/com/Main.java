@@ -34,6 +34,7 @@ public class Main {
     public static String normalizeWord(String str) {
         String s = str.replaceAll("[\\p{Punct}]", "");
         s = s.toUpperCase();
+        System.out.println();
         return s;
     }
 

@@ -24,34 +24,34 @@ public class Statistics {
     public static void main(String[] args) throws IOException {
 
 
-        Path pathBig4 = Paths.get("results_4_big");
+        Path pathBig4 = Paths.get("./scripts/results_4_big");
         int average4Big = getAverage(pathBig4);
         System.out.println(average4Big);
 
-        Path pathMid4 = Paths.get("results_4_mid");
+        Path pathMid4 = Paths.get("./scripts/results_4_mid");
         int average4Mid = getAverage(pathMid4);
         System.out.println(average4Mid);
 
-        Path pathSmall4 = Paths.get("results_4_small");
+        Path pathSmall4 = Paths.get("./scripts/results_4_small");
         int average4Small = getAverage(pathSmall4);
         System.out.println(average4Small);
 
 
-        Path pathBig1 = Paths.get("results_1_big_seq");
+        Path pathBig1 = Paths.get("./scripts/results_1_big_seq");
         int average1Big = getAverage(pathBig1);
 
-        Path pathMid1 = Paths.get("results_1_mid_seq");
+        Path pathMid1 = Paths.get("./scripts/results_1_mid_seq");
         int average1Mid = getAverage(pathMid1);
 
-        Path pathSmall1 = Paths.get("results_1_small_seq");
+        Path pathSmall1 = Paths.get("./scripts/results_1_small_seq");
         int average1Small = getAverage(pathSmall1);
 
 
-        int average1BigParal = getAverage(Paths.get("results_1_big"));
-        int average2BigParal = getAverage(Paths.get("results_2_big"));
-        int average3BigParal = getAverage(Paths.get("results_3_big"));
-        int average4BigParal = getAverage(Paths.get("results_4_big"));
-        int average5BigParal = getAverage(Paths.get("results_5_big"));
+        int average1BigParal = getAverage(Paths.get("./scripts/results_1_big"));
+        int average2BigParal = getAverage(Paths.get("./scripts/results_2_big"));
+        int average3BigParal = getAverage(Paths.get("./scripts/results_3_big"));
+        int average4BigParal = getAverage(Paths.get("./scripts/results_4_big"));
+        int average5BigParal = getAverage(Paths.get("./scripts/results_5_big"));
 
 
         System.out.println("         1     4 ");

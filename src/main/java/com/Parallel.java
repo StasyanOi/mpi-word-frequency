@@ -69,11 +69,11 @@ public class Parallel {
         //Set Root process
         int root = 0;
 
-        Path temporaryDirectory = null;
+        Path temporaryDirectory = Paths.get("temp");
 
         //Print world size
         if (rank == root) {
-            temporaryDirectory = Files.createTempDirectory("temp");
+            temporaryDirectory = Files.createDirectory(temporaryDirectory);
 
             LOGGER.info("world size: " + worldSize);
             Path inputPath = Paths.get("./text/input_text.txt");
@@ -164,7 +164,7 @@ public class Parallel {
                     .collect(toList());
 
 
-            Path pathFinal = Paths.get("./results/parallelfinal.txt");
+            Path pathFinal = Paths.get(String.format("./results/parallelfinal%1$s.txt", worldSize));
 
             Files.write(pathFinal, wordFreqReal);
 

@@ -27,6 +27,9 @@ jobs:
         java-version: '8'
         distribution: 'temurin'
         cache: maven
+
+    - name: Allow the installation of libraries to Local Maven
+      run: chmod +x ./install_libs_to_maven.sh
     - name: Install dependencies
       run: ./install_libs_to_maven.sh
     - name: Build with Maven

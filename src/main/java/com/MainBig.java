@@ -1,6 +1,7 @@
 package com;
 
 import mpi.MPI;
+import org.apache.log4j.Logger;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -20,17 +21,19 @@ import static java.util.stream.Collectors.*;
 
 public class MainBig {
 
+    private static final Logger LOGGER = Logger.getLogger(MainBig.class);
+
     public static String normalize(String str) {
         String str1 = str.trim();
         String[] s1 = str1.split(" ");
         String collect = Arrays.stream(s1).filter(s2 -> !s2.isEmpty()).collect(Collectors.joining(" "));
-        String s = collect.replaceAll("[\\p{Punct}]", "");
+        String s = collect.replaceAll("\\p{Punct}", "");
         s = s.toUpperCase();
         return s;
     }
 
     public static String normalizeWord(String str) {
-        String s = str.replaceAll("[\\p{Punct}]", "");
+        String s = str.replaceAll("\\p{Punct}", "");
         s = s.toUpperCase();
         return s;
     }
@@ -43,11 +46,11 @@ public class MainBig {
 
         int listNumber = 0;
 
-        for (int i = 0; i < words.size(); i++) {
+        for (String word : words) {
             if (listNumber == workerNumber) {
                 listNumber = 0;
             }
-            loads.get(listNumber).add(words.get(i));
+            loads.get(listNumber).add(word);
             ++listNumber;
         }
 
@@ -57,6 +60,7 @@ public class MainBig {
 
     public static void main(String[] args) throws IOException {
         Instant start = Instant.now();
+
         //Init
         MPI.Init(args);
 
@@ -70,9 +74,9 @@ public class MainBig {
 
         //Print world size
         if (rank == root) {
-            System.out.println("world size: " + worldSize);
+            LOGGER.info("world size: " + worldSize);
             Path inputPath = Paths.get("./text/input_big.txt");
-            
+
             List<String> words = Files.lines(inputPath)
                     .parallel()
                     .map(MainBig::normalize)
@@ -88,12 +92,7 @@ public class MainBig {
                     .map(number -> "./text/" + number + ".txt")
                     .collect(toList());
 
-            List<Path> filepaths = filenames.stream().map(name -> Paths.get(name)).collect(toList());
-
-//            for (Path filepath : filepaths) {
-//                Files.deleteIfExists(filepath);
-//                Files.createFile(filepath);
-//            }
+            List<Path> filepaths = filenames.stream().map(Paths::get).collect(toList());
 
             for (int i = 0; i < worldSize; i++) {
                 Files.write(filepaths.get(i), workerLoads.get(i));
@@ -120,16 +119,15 @@ public class MainBig {
         Path path = Paths.get(filename);
         List<String> wordFreq = Files.lines(path)
                 .collect(collectingAndThen(
-                groupingBy(Function.identity(), Collectors.counting()),
-                stringLongMap -> stringLongMap
-                        .entrySet()
-                        .stream()
-                        .map(stringLongEntry -> stringLongEntry.getKey() + "-" + stringLongEntry.getValue())
-                        .collect(toList())));
+                        groupingBy(Function.identity(), Collectors.counting()),
+                        stringLongMap -> stringLongMap
+                                .entrySet()
+                                .stream()
+                                .map(stringLongEntry -> stringLongEntry.getKey() + "-" + stringLongEntry.getValue())
+                                .collect(toList())));
 
         Path answerPath = Paths.get(answerFilename);
-//        Files.deleteIfExists(answerPath);
-//        Files.createFile(answerPath);
+
         Files.write(answerPath, wordFreq);
 
         //Gather
@@ -164,14 +162,13 @@ public class MainBig {
 
 
             Path pathFinal = Paths.get("./text/parallelfinal.txt");
-//            Files.deleteIfExists(pathFinal);
-//            Files.createFile(pathFinal);
-            Files.write(pathFinal,wordFreqReal);
+
+            Files.write(pathFinal, wordFreqReal);
         }
 
         //Finalize
         MPI.Finalize();
         Instant end = Instant.now();
-        System.out.println(Duration.between(start, end).toMillis());
+        LOGGER.info("Milliseconds: " + Duration.between(start, end).toMillis());
     }
 }

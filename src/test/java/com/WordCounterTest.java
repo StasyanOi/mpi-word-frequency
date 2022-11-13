@@ -6,6 +6,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.nio.file.Files;
+import java.nio.file.Path;
 import java.nio.file.Paths;
 
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
@@ -18,7 +19,7 @@ class WordCounterTest {
 
         Runtime runtime = Runtime.getRuntime();
 
-        Process process = runtime.exec("java -jar ./mpj-v0_44/lib/starter.jar -cp ./target/classes com.MainBig -np 1 > results_1_big");
+        Process process = runtime.exec("java -jar ./mpj-v0_44/lib/starter.jar -cp ./target/classes com.Parallel -np 3");
 
         StringBuilder output = new StringBuilder();
         BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream()));
@@ -35,7 +36,8 @@ class WordCounterTest {
         assertEquals(0, exitCode);
 
         byte[] expectedResultBytes = Files.readAllBytes(Paths.get(ClassLoader.getSystemResource("reference_result.txt").getPath()));
-        byte[] actualResultBytes = Files.readAllBytes(Paths.get("./text/parallelfinal.txt"));
+        Path resultFile = Paths.get("./results/parallelfinal.txt");
+        byte[] actualResultBytes = Files.readAllBytes(resultFile);
 
         assertArrayEquals(expectedResultBytes, actualResultBytes);
     }

@@ -5,7 +5,10 @@ import org.junit.jupiter.api.Test;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 
+import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class WordCounterTest {
@@ -27,7 +30,13 @@ class WordCounterTest {
 
         System.out.println(output);
 
-        int i = process.waitFor();
-        assertEquals(0, i);
+        int exitCode = process.waitFor();
+
+        assertEquals(0, exitCode);
+
+        byte[] expectedResultBytes = Files.readAllBytes(Paths.get(ClassLoader.getSystemResource("reference_result.txt").getPath()));
+        byte[] actualResultBytes = Files.readAllBytes(Paths.get("./text/parallelfinal.txt"));
+
+        assertArrayEquals(expectedResultBytes, actualResultBytes);
     }
 }

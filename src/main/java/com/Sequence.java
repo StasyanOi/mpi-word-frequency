@@ -23,22 +23,29 @@ public class Sequence {
         Instant start = Instant.now();
         Path path = Paths.get(args[0]);
 
+        Path resultsDirectory = Paths.get("results");
+        LOGGER.info("Creating result directory");
+        if (!Files.notExists(path)) {
+            LOGGER.info("Created result directory");
+            Files.createDirectory(resultsDirectory);
+        }
+
         Map<String, Long> freq = Files.lines(path)
                 .flatMap(s -> Arrays.stream(s.split(" ")))
                 .map(Parallel::normalizeWord)
                 .filter(s -> !s.equals(""))
                 .collect(groupingBy(Function.identity(), counting()));
 
-
         List<String> stringsFreq = freq.entrySet().stream()
                 .map(stringLongEntry -> stringLongEntry.getKey() + ": " + stringLongEntry.getValue())
                 .sorted()
                 .collect(toList());
 
-        Path path1 = Paths.get("./results/finalsequencial.txt");
-        Files.deleteIfExists(path1);
-        Files.createFile(path1);
-        Files.write(path1, stringsFreq);
+        Path resultFile = Paths.get(resultsDirectory.toString(), "finalsequencial.txt");
+        Files.deleteIfExists(resultFile);
+        Files.createFile(resultFile);
+
+        Files.write(resultFile, stringsFreq);
 
         Instant end = Instant.now();
         LOGGER.info("Milliseconds: " + Duration.between(start, end).toMillis());

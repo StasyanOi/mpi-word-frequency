@@ -70,11 +70,14 @@ public class Parallel {
         int root = 0;
 
         Path temporaryDirectory = Paths.get("temp");
-
+        Path results = Paths.get("results");
+        LOGGER.info("rank: " + rank);
         //Print world size
         if (rank == root) {
             temporaryDirectory = Files.createDirectory(temporaryDirectory);
-
+            if (Files.notExists(results)) {
+                Files.createDirectory(results);
+            }
             LOGGER.info("world size: " + worldSize);
             Path inputPath = Paths.get("./text/input_text.txt");
 

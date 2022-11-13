@@ -71,10 +71,6 @@ public class Parallel {
 
         Path temporaryDirectory = Paths.get("temp");
 
-        if (Files.exists(temporaryDirectory)) {
-            deleteDirectory(temporaryDirectory);
-        }
-
         //Print world size
         if (rank == root) {
             temporaryDirectory = Files.createDirectory(temporaryDirectory);

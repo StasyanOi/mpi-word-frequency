@@ -1,5 +1,7 @@
 package com;
 
+import org.apache.log4j.Logger;
+
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -14,6 +16,8 @@ import java.util.function.Function;
 import static java.util.stream.Collectors.*;
 
 public class Sequence {
+
+    private static final Logger LOGGER = Logger.getLogger(Sequence.class);
 
     public static void main(String[] args) throws IOException {
         Instant start = Instant.now();
@@ -34,9 +38,9 @@ public class Sequence {
         Path path1 = Paths.get("./results/finalsequencial.txt");
         Files.deleteIfExists(path1);
         Files.createFile(path1);
-        Files.write(path1,stringsFreq);
+        Files.write(path1, stringsFreq);
 
         Instant end = Instant.now();
-        System.out.println(Duration.between(start, end).toMillis());
+        LOGGER.info("Milliseconds: " + Duration.between(start, end).toMillis());
     }
 }

@@ -22,7 +22,7 @@ class WordCounterTest {
         Runtime runtime = Runtime.getRuntime();
 
         String[] environmentVars = {"MPJ_HOME=./mpj-v0_44"};
-        String launchWordFrequencyCount = String.format("java -jar ./mpj-v0_44/lib/starter.jar -cp ./target/classes com.Parallel -np %1$s", worldSize);
+        String launchWordFrequencyCount = String.format("java -jar ./mpj-v0_44/lib/starter.jar -cp ./target/classes com.internal.Parallel -np %1$s", worldSize);
 
         Process process = runtime.exec(launchWordFrequencyCount, environmentVars);
 
@@ -51,7 +51,7 @@ class WordCounterTest {
     void countWordsSequenceTest() throws IOException, InterruptedException {
         Runtime runtime = Runtime.getRuntime();
 
-        String launchWordFrequencyCount = "java -cp ./target/classes:./lib/log4j.jar com.Sequence ./text/input_text.txt";
+        String launchWordFrequencyCount = "java -cp ./target/classes:./lib/log4j.jar com.internal.Sequence ./text/input_text.txt";
 
         Process process = runtime.exec(launchWordFrequencyCount);
 

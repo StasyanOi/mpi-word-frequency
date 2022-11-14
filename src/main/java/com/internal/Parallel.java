@@ -1,4 +1,4 @@
-package com;
+package com.internal;
 
 import mpi.MPI;
 import org.apache.log4j.Logger;

@@ -21,31 +21,39 @@ public class Sequence {
 
     public static void main(String[] args) throws IOException {
         Instant start = Instant.now();
-        Path path = Paths.get(args[0]);
+        Path inputTextFile = Paths.get(args[0]);
 
-        Path resultsDirectory = Paths.get("results");
-        LOGGER.info("Creating result directory");
-        if (!Files.notExists(path)) {
-            LOGGER.info("Created result directory");
-            Files.createDirectory(resultsDirectory);
+        String resultsDirectoryName = "results";
+        if (Files.exists(inputTextFile)) {
+            LOGGER.info("Creating result directory");
+            Path resultsDirectory = Paths.get(resultsDirectoryName);
+            if (Files.notExists(resultsDirectory)) {
+                Files.createDirectory(resultsDirectory);
+                LOGGER.info("Created result directory");
+            } else {
+                LOGGER.info("Results directory already created");
+            }
+        } else {
+            LOGGER.warn("Input text file does not exist");
+            throw new IllegalArgumentException("Input text file does not exist");
         }
 
-        Map<String, Long> freq = Files.lines(path)
+        Map<String, Long> wordFrequency = Files.lines(inputTextFile)
                 .flatMap(s -> Arrays.stream(s.split(" ")))
                 .map(Parallel::normalizeWord)
                 .filter(s -> !s.equals(""))
                 .collect(groupingBy(Function.identity(), counting()));
 
-        List<String> stringsFreq = freq.entrySet().stream()
+        List<String> wordFrequencyStringRecords = wordFrequency.entrySet().stream()
                 .map(stringLongEntry -> stringLongEntry.getKey() + ": " + stringLongEntry.getValue())
                 .sorted()
                 .collect(toList());
 
-        Path resultFile = Paths.get(resultsDirectory.toString(), "finalsequencial.txt");
+        Path resultFile = Paths.get(resultsDirectoryName, "finalsequencial.txt");
         Files.deleteIfExists(resultFile);
         Files.createFile(resultFile);
 
-        Files.write(resultFile, stringsFreq);
+        Files.write(resultFile, wordFrequencyStringRecords);
 
         Instant end = Instant.now();
         LOGGER.info("Milliseconds: " + Duration.between(start, end).toMillis());

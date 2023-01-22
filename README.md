@@ -2,7 +2,7 @@
 
 This app counts the word frequency for a given text file.
 
-Can calculate the word frequency in parallel or in sequence.
+Can calculate the word frequency in parallel mode or in sequence mode.
 
 Uses MPJ Express (http://mpjexpress.org/) MPI implementation.
 

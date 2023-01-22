@@ -17,9 +17,9 @@ import java.util.stream.Stream;
 import static java.util.Objects.*;
 import static java.util.stream.Collectors.*;
 
-public class Parallel {
+public class Main {
 
-    private static final Logger LOGGER = Logger.getLogger(Parallel.class);
+    private static final Logger LOGGER = Logger.getLogger(Main.class);
 
     public static String normalize(String str) {
         String str1 = str.trim();
@@ -57,10 +57,16 @@ public class Parallel {
 
 
     public static void main(String[] args) throws IOException {
+
+        if (args.length != 4) {
+            throw new IllegalArgumentException("Not enough arguments entered into the prompt");
+        }
+
         Instant start = Instant.now();
 
         //Init
         MPI.Init(args);
+        LOGGER.debug("Arguments: " + Arrays.toString(args));
 
         //World info
         int rank = MPI.COMM_WORLD.Rank();
@@ -74,16 +80,18 @@ public class Parallel {
         LOGGER.info("rank: " + rank);
         //Print world size
         if (rank == root) {
-            temporaryDirectory = Files.createDirectory(temporaryDirectory);
+            if (Files.notExists(temporaryDirectory)) {
+                Files.createDirectory(temporaryDirectory);
+            }
             if (Files.notExists(results)) {
                 Files.createDirectory(results);
             }
             LOGGER.info("world size: " + worldSize);
-            Path inputPath = Paths.get("./text/input_text.txt");
+            Path inputPath = Paths.get(args[3]);
 
             List<String> words = Files.lines(inputPath)
                     .parallel()
-                    .map(Parallel::normalize)
+                    .map(Main::normalize)
                     .flatMap(s -> Arrays.stream(s.split(" ")))
                     .filter(s -> !s.equals(""))
                     .collect(Collectors.toList());
